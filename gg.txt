@@ -1,0 +1,53 @@
+-- Purple Toggle Button + Menu
+
+local player = game.Players.LocalPlayer
+local gui = Instance.new("ScreenGui")
+gui.Parent = game.CoreGui
+
+-- MENU
+local frame = Instance.new("Frame")
+frame.Parent = gui
+frame.Size = UDim2.new(0,300,0,200)
+frame.Position = UDim2.new(0.5,-150,0.5,-100)
+frame.BackgroundColor3 = Color3.fromRGB(80,0,40)
+frame.Visible = false
+
+-- BUTTON SPEED
+local speed = Instance.new("TextButton")
+speed.Parent = frame
+speed.Size = UDim2.new(0,260,0,40)
+speed.Position = UDim2.new(0,20,0,20)
+speed.Text = "Super Speed"
+
+speed.MouseButton1Click:Connect(function()
+    local hum = player.Character:FindFirstChild("Humanoid")
+    if hum then
+        hum.WalkSpeed = 100
+    end
+end)
+
+-- BUTTON JUMP
+local jump = Instance.new("TextButton")
+jump.Parent = frame
+jump.Size = UDim2.new(0,260,0,40)
+jump.Position = UDim2.new(0,20,0,70)
+jump.Text = "Super Jump"
+
+jump.MouseButton1Click:Connect(function()
+    local hum = player.Character:FindFirstChild("Humanoid")
+    if hum then
+        hum.JumpPower = 120
+    end
+end)
+
+-- PURPLE BUTTON
+local toggle = Instance.new("TextButton")
+toggle.Parent = gui
+toggle.Size = UDim2.new(0,180,0,40)
+toggle.Position = UDim2.new(0.5,-90,0.05,0)
+toggle.BackgroundColor3 = Color3.fromRGB(150,0,150)
+toggle.Text = "Show Menu"
+
+toggle.MouseButton1Click:Connect(function()
+    frame.Visible = not frame.Visible
+end)
